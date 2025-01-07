@@ -132,7 +132,7 @@ The trained model can be served via the FastAPI app by running:
 python app.py
 ```
 
-![Web Application Demo](images/Web Application.PNG)
+![Web Application Demo](images/web_application.PNG)
 
 ### Customization
 - Modify configuration settings in `config/config.yaml` and `params.yaml`.
