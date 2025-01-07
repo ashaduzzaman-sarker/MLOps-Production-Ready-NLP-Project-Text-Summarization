@@ -1,5 +1,6 @@
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
-from datasets import load_dataset, load_from_disk, load_metric
+from datasets import load_dataset, load_from_disk #, load_metric
+from evaluate import load # load_metric
 import torch
 import pandas as pd
 from tqdm import tqdm
@@ -10,7 +11,7 @@ class ModelEvaluation:
     def __init__(self, config: ModelEvaluationConfig):
         self.config = config
     
-    def generate_batch_sized_chunks(self,list_of_elements, batch_size):
+    def generate_batch_sized_chunks(self, list_of_elements, batch_size):
         """split the dataset into smaller batches that we can process simultaneously
         Yield successive batch-sized chunks from list_of_elements."""
         for i in range(0, len(list_of_elements), batch_size):
@@ -70,8 +71,9 @@ class ModelEvaluation:
 
         rouge_names = ["rouge1", "rouge2", "rougeL", "rougeLsum"]
   
-        rouge_metric = load_metric('rouge')
-
+        # rouge_metric = load_metric('rouge')
+        rouge_metric = load('rouge')
+        
         score = self.calculate_metric_on_test_ds(
         dataset_samsum_pt['test'][0:10], rouge_metric, model_pegasus, tokenizer, batch_size = 2, column_text = 'dialogue', column_summary= 'summary'
             )
