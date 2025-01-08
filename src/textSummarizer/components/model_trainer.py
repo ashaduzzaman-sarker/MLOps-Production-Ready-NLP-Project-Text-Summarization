@@ -52,7 +52,7 @@ class ModelTrainer:
 
         trainer = Trainer(model=model_pegasus, args=trainer_args,
                   tokenizer=tokenizer, data_collator=seq2seq_data_collator,
-                  train_dataset=dataset_samsum_pt["test"],  # Use train when GPU Available
+                  train_dataset=dataset_samsum_pt["train"],  # Use "train" when GPU Available or "test" for quick test
                   eval_dataset=dataset_samsum_pt["validation"])
         
         trainer.train()

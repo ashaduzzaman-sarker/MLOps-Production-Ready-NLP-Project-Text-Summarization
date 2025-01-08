@@ -1,6 +1,6 @@
 transformers
 transformers[sentencepiece]
-transformers[torch]
+# transformers[torch]
 datasets
 sacrebleu 
 rouge_score 
@@ -11,6 +11,7 @@ tqdm
 PyYAML
 matplotlib
 torch
+evaluate
 notebook
 boto3
 mypy-boto3-s3
